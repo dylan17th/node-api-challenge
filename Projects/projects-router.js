@@ -17,6 +17,22 @@ router.get('/:id', projectsIdValidation, (req,res)=>{
     })
 })
 
+router.get('/:id/actions' ,projectsBodyValidation , (req,res)=>{
+    const id = req.params.id;
+    db.getProjectActions(id)
+    .then(actions=> {
+        if(actions.length > 0){
+            res.status(200).json(actions)
+        }else{
+            res.status(400).json({message: 'this project does not have any actions '})
+        }
+    })
+    .catch(err => {
+        res.status(500).json({message: 'could not get the actions for that project from the database'})
+    })
+
+})
+
 router.post('/', projectsBodyValidation, (req,res)=>{
     const project = req.body;
     db.insert(project)
@@ -56,7 +72,6 @@ router.delete('/:id', projectsIdValidation, (req, res)=>{
     })
 })
 
-
 //middleware for the projects endpoints 
 function projectsIdValidation(req, res, next){
     const id = req.params.id;
@@ -81,5 +96,6 @@ function projectsBodyValidation(req,res,next){
         res.status(404).json({messgae: 'need to included both a name and description in the body of the request'})
     }
 }
+
 
 module.exports = router;
