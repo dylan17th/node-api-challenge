@@ -1,0 +1,19 @@
+1.Mention two parts of Express that you learned about this week.
+
+	Answer: Express and node.js were both completely new to me before this week, so essentially I could tell you everything I know was learned this week. Nonetheless in particular I learned how to implement middleware in my API using express and in general how to set up a node API with express. 
+
+2. Describe Middleware?
+
+    Answer: Middleware are functions in node.js that have access to req,res and next that allow you to write reusable error, validation and authentication functions. These functions can either be used globally or inserted locally into an endpoint before the final request handler. 
+ 
+3. Describe a Resource?
+
+    Answer: Resources in node refers to all components on your api. For example, if you had an endpoint for users and post, you would refer to both of them as resources. Additionally, these resources are available to clients using HTTP methods. 
+ 
+4.What can the API return to help clients know if a request was successful?
+
+	Answer: Throughout this week I learned the importance of sending acurrucate status codes for the client. Regardless if the request was successful or not it is good practice to send a message stating where the request failed and why so the client knows exactly how to fix the problem and access our API correctly. Additionally, it is important for a client to know the request was successful so they don’t keep hitting our API or stop hitting the API when they think it was successful when the request wasn’t. In conclusion the importance of communication can not be stressed enough when building an API. 
+
+5.How can we partition our application into sub-applications?
+
+    Answer: we can partition our application into web-application using the express router. Using express routers will allow us to break our code into different folders and files based on which resource the files relate to. This helps keep our code clean and helps other developers and ourselves have easier access to a particular file if debugging is needed in the future. 

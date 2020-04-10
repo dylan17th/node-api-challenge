@@ -3,7 +3,14 @@ const router = express.Router();
 const db = require('../data/helpers/projectModel')
 
 router.get('/', (req,res)=>{
-    res.status(200).json({message: 'the projects endpoint is working'})
+    db.get()
+    .then( arr => {
+        res.status(200).json(arr)
+    })
+    .catch(err => {
+        res.status(500).json({message: 'could not get the projects from the database'})
+    })
+    
 })
 
 router.get('/:id', projectsIdValidation, (req,res)=>{
