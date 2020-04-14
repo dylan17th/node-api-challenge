@@ -1,0 +1,25 @@
+Documentation for Sprint One: 
+
+Projects Endpoints: 
+GET: /api/projects  - get all projects 
+GET : /api/projects/:id - get single project
+GET : /api/projects/:id/actions - get all actions for the project with the id of the project.
+POST : /api/projects - create a new project
+PUT  : /api/projects/:id  -update an existing project
+DELETE :  /api/projects/:id - delete an existing project
+
+Middleware Validation for Projects: 
+Function projectsIdValidation - this function will make sure the id in the params that represents the project ID already exists and if not it will return an error.
+Function projectsBodyVaslidation - this function will confirm the required properties are in the body of the request and if not then send an error code.
+ 
+Actions Endpoints: 
+GET /api/actions - get all actions 
+GET /api/actions/:id - get an action based on the id of the action that will be passed through the params of this endpoint.
+POST /api/actions - this will create a new action for a project, this need to be passed a project ID that currently already exists in the database,  along with all the  required fields to make an action for the project.
+PUT /api/actions/:id - update an existing action on a project the id would be the actions id, not the projects id. 
+DELETE /api/actions/:id - delete an existing action from a project, where the id in the params represents the action id. 
+
+Middleware Validation for Actions: 
+Function actionsIdValidation - this function is going to confirm the id entered into the params is an existing and valid id.
+Function actionsBodyValidation - this function is going to verify that the req.body includes the required field for the post method method. It's going to confirm there is a project_id/description/notes as properties in the body of the request. 
+Function actionBodyValidationForUpdates - this funciton is going to verify that the req.body includes the required field for the post method method. It's going to confirm there is a description and notes property in the body of the request. 
